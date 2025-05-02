@@ -1,0 +1,8 @@
+*{
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+div.center{
+    display: flex;
+    justify-content: center;
+}
