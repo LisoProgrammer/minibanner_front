@@ -1,106 +1,179 @@
 <table class="table text-left table-hover">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nombre Completo</th>
-        <th scope="col">Carrera</th>
-        <th scope="col">S</th>
-        <th scope="col">Prom</th>
-        <th scope="col">Materias</th>
-        <th scope="col">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let alumno of datos">
-        <td>{{ alumno.identificacion }}</td>
-        <td>
-          {{ alumno.primer_nombre }} {{ alumno.segundo_nombre }}
-          {{ alumno.primer_apellido }} {{ alumno.segundo_apellido }}
-        </td>
-        <td>{{ alumno.carrera }}</td>
-        <td>{{ alumno.semestre }}</td>
-        <td>{{ alumno.promedio }}</td>
-        <td>
-          <div class="btn-group">
-            <button class="btn btn-primary btn-sm" (click)="selectAlumno(alumno)" type="button" data-bs-toggle="modal" data-bs-target="#miModal">
-              <i class="bi bi-view-stacked"></i>
-              Ver
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre Completo</th>
+      <th scope="col">Carrera</th>
+      <th scope="col">S</th>
+      <th scope="col">Prom</th>
+      <th scope="col">Materias</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let alumno of datos">
+      <td>{{ alumno.identificacion }}</td>
+      <td>
+        {{ alumno.primer_nombre }} {{ alumno.segundo_nombre }}
+        {{ alumno.primer_apellido }} {{ alumno.segundo_apellido }}
+      </td>
+      <td>{{ alumno.carrera }}</td>
+      <td>{{ alumno.semestre }}</td>
+      <td>{{ alumno.promedio }}</td>
+      <td>
+        <div class="btn-group">
+          <button
+            class="btn btn-primary btn-sm"
+            (click)="selectAlumno(alumno)"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#miModal"
+          >
+            <i class="bi bi-view-stacked"></i>
+            Ver
+          </button>
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-secondary btn-sm" (click)="selectAlumno(alumno)">
+          <i class="bi bi-pencil-square"></i>
+        </button>
+        <button class="btn btn-danger btn-sm" (click)="selectAlumno(alumno)">
+          <i class="bi bi-trash3-fill"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="miModal"
+  tabindex="-1"
+  aria-labelledby="miModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header" *ngIf="alumnoSeleccionado">
+        <h5 class="modal-title" id="miModalLabel">
+          Materias de {{ alumnoSeleccionado?.primer_nombre }}
+          {{ alumnoSeleccionado?.primer_apellido }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Cerrar"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- Información del Alumno -->
+        <table class="table text-left">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre Completo</th>
+              <th scope="col">Carrera</th>
+              <th scope="col">Semestre</th>
+              <th scope="col">Promedio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ alumnoSeleccionado?.identificacion }}</td>
+              <td>
+                {{ alumnoSeleccionado?.primer_nombre }}
+                {{ alumnoSeleccionado?.segundo_nombre }}
+                {{ alumnoSeleccionado?.primer_apellido }}
+                {{ alumnoSeleccionado?.segundo_apellido }}
+              </td>
+              <td>{{ alumnoSeleccionado?.carrera }}</td>
+              <td>{{ alumnoSeleccionado?.semestre }}</td>
+              <td>{{ alumnoSeleccionado?.promedio }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex w-100 align-items-center">
+          <div class="flex-grow-1 me-2">
+            <select class="form-select w-100">
+              <option value="">Materia 1 (2 créditos)</option>
+              <option value="">Materia 2 (4 créditos)</option>
+              <option value="">Materia 3 (3 créditos)</option>
+              <option value="">Materia 4 (2 créditos)</option>
+              <option value="">Materia 5 (4 créditos)</option>
+            </select>
+          </div>
+          <div>
+            <button class="btn btn-success w-100">
+              <i class="bi bi-plus-square"></i>
+              Matricular Materia
             </button>
           </div>
-        </td>
-        <td>
-          <button class="btn btn-primary btn-sm" (click)="selectAlumno(alumno)"><i class="bi bi-pencil-square"></i></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <div class="modal-header" *ngIf="alumnoSeleccionado">
-          <h5 class="modal-title" id="miModalLabel">
-            Materias de {{ alumnoSeleccionado?.primer_nombre }} {{ alumnoSeleccionado?.primer_apellido }}
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-        <div class="modal-body">
-          <!-- Información del Alumno -->
-          <table class="table text-left">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre Completo</th>
-                <th scope="col">Carrera</th>
-                <th scope="col">Semestre</th>
-                <th scope="col">Promedio</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{ alumnoSeleccionado?.identificacion }}</td>
-                <td>{{ alumnoSeleccionado?.primer_nombre }} {{ alumnoSeleccionado?.segundo_nombre }} {{ alumnoSeleccionado?.primer_apellido }} {{ alumnoSeleccionado?.segundo_apellido }}</td>
-                <td>{{ alumnoSeleccionado?.carrera }}</td>
-                <td>{{ alumnoSeleccionado?.semestre }}</td>
-                <td>{{ alumnoSeleccionado?.promedio }}</td>
-              </tr>
-            </tbody>
-          </table>
-  
-          <!-- Materias del Alumno -->
-          <table class="table text-left">
-            <thead>
-              <tr>
-                <th scope="col">CODE</th>
-                <th scope="col">Mat.</th>
-                <th scope="col">CRE</th>
-                <th scope="col">1C (30%)</th>
-                <th scope="col">2C (35%)</th>
-                <th scope="col">3C (35%)</th>
-                <th scope="col">DEF</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let materia of alumnoSeleccionado?.materias">
-                <td>{{ materia.code }}</td>
-                <td>{{ materia.nombre }}</td>
-                <td>{{ materia.creditos }}</td>
-                <td>{{ materia.nota_1 }}</td>
-                <td>{{ materia.nota_2 }}</td>
-                <td>{{ materia.nota_3 }}</td>
-                <td>{{ materia.promedio }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Cerrar
-          </button>
-          <button type="button" class="btn btn-primary">Guardar cambios</button>
-        </div>
+             
+        <!-- Materias del Alumno -->
+        <table class="table text-left">
+          <thead>
+            <tr>
+              <th scope="col">CODE</th>
+              <th scope="col">Mat.</th>
+              <th scope="col">CRE</th>
+              <th scope="col">1C (30%)</th>
+              <th scope="col">2C (35%)</th>
+              <th scope="col">3C (35%)</th>
+              <th scope="col" class="text-center">DEF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let materia of alumnoSeleccionado?.materias">
+              <td class="col-md-2">
+                {{ materia.code }}
+              </td>
+              <td class="col-md-3">
+                {{ materia.nombre }}
+              </td>
+              <td class="col-md-1">
+                {{ materia.creditos }}
+              </td>
+              <td class="col-md-1">
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  placeholder="Nota 1"
+                  [value]="materia.nota_1"
+                />
+              </td>
+              <td class="col-md-1">
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  placeholder="Nota 2"
+                  [value]="materia.nota_2"
+                />
+              </td>
+              <td class="col-md-1">
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  placeholder="Nota 3"
+                  [value]="materia.nota_3"
+                />
+              </td>
+              <td class="col-md-2 text-center">
+                {{ materia.promedio }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary">Guardar cambios</button>
       </div>
     </div>
   </div>
-  
+</div>

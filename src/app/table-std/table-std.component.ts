@@ -63,6 +63,48 @@ export class TableStdComponent {
           promedio: 3.8
         }
       ]
+    },
+    {
+      identificacion: 124585555,
+      primer_nombre: "Yuliana",
+      segundo_nombre: "",
+      primer_apellido: "Martelo",
+      segundo_apellido: "Santos",
+      promedio: 4.0,
+      semestre: 5,
+      carrera: "Ingeniería Industrial",
+      materias: [
+        {
+          code: "ADM101",
+          creditos: 3,
+          nombre: "Contabilidad Básica",
+          nota_1: 3.5,
+          nota_2: 4.0,
+          nota_3: 3.9,
+          promedio: 3.8
+        }
+      ]
+    },
+    {
+      identificacion: 987654321,
+      primer_nombre: "Laura",
+      segundo_nombre: "María",
+      primer_apellido: "Rodríguez",
+      segundo_apellido: "López",
+      promedio: 3.8,
+      semestre: 4,
+      carrera: "Administración de Empresas",
+      materias: [
+        {
+          code: "ADM101",
+          creditos: 3,
+          nombre: "Contabilidad Básica",
+          nota_1: 3.5,
+          nota_2: 4.0,
+          nota_3: 3.9,
+          promedio: 3.8
+        }
+      ]
     }
   ];
 
