@@ -1,4 +1,4 @@
-<form action="" class="form">
+<form class="form" [formGroup]="formStudent" (ngSubmit)="enviar()">
   <div class="row">
     <div class="col-12">
       <label class="sr-only" for="primer_nombre">Primer nombre</label>
@@ -11,6 +11,8 @@
           class="form-control"
           id="primer_nombre"
           placeholder="Primer nombre"
+          formControlName="primer_nombre"
+          required
         />
       </div>
     </div>
@@ -27,6 +29,7 @@
           class="form-control"
           id="segundo_nombre"
           placeholder="Segundo nombre"
+          formControlName="segundo_nombre"
         />
       </div>
     </div>
@@ -43,6 +46,8 @@
           class="form-control"
           id="primer_app"
           placeholder="Primer apellido"
+          formControlName="primer_apellido"
+          required
         />
       </div>
     </div>
@@ -59,6 +64,8 @@
           class="form-control"
           id="segundo_app"
           placeholder="Segundo apellido"
+          formControlName="segundo_apellido"
+          required
         />
       </div>
     </div>
@@ -70,7 +77,14 @@
         <div class="input-group-prepend">
           <div class="input-group-text"><i class="bi bi-123"></i></div>
         </div>
-        <select name="" id="semestre" class="form-select">
+        <select
+          name=""
+          id="semestre"
+          class="form-select"
+          formControlName="semestre"
+          value="0"
+        >
+          <option value="0">Seleccione...</option>
           <option value="1">1° semestre</option>
           <option value="2">2° semestre</option>
           <option value="3">3° semestre</option>
@@ -92,36 +106,45 @@
         <div class="input-group-prepend">
           <div class="input-group-text"><i class="bi bi-123"></i></div>
         </div>
-        <select name="" id="carrera" class="form-select">
-          <option value="ADMN">Administración de Empresas</option>
-          <option value="ARQU">Arquitectura</option>
-          <option value="BIOG">Biología</option>
-          <option value="COMU">Comunicación Social</option>
-          <option value="CONT">Contaduría Pública</option>
-          <option value="DERC">Derecho</option>
-          <option value="DISE">Diseño Gráfico</option>
-          <option value="ECON">Economía</option>
-          <option value="EDUF">Educación Física</option>
-          <option value="ENFE">Enfermería</option>
-          <option value="FINZ">Finanzas</option>
-          <option value="FISI">Fisioterapia</option>
-          <option value="ICHE">Ingeniería química</option>
-          <option value="ICIV">Ingeniería civil</option>
-          <option value="IECA">Ingeniería electrónica</option>
-          <option value="IELE">Ingeniería eléctrica</option>
-          <option value="IIDN">Ingeniería industrial</option>
-          <option value="IMCA">Ingeniería mecatrónica</option>
-          <option value="ISCO">Ingeniería de sistemas</option>
-          <option value="LENG">Lenguas Modernas</option>
-          <option value="MEDI">Medicina</option>
-          <option value="MERC">Mercadeo</option>
-          <option value="NUTR">Nutrición y Dietética</option>
-          <option value="ODON">Odontología</option>
-          <option value="PSIC">Psicología</option>
-          <option value="PUBI">Publicidad</option>
-          <option value="SOCG">Sociología</option>
-          <option value="TRAB">Trabajo Social</option>
-          <option value="TURM">Turismo y Hotelería</option>
+        <select
+          name=""
+          id="carrera"
+          class="form-select"
+          formControlName="carrera"
+          value="0"
+        >
+          <option value="0">Seleccione...</option>
+          <option value="Administración de Empresas">
+            Administración de Empresas
+          </option>
+          <option value="Arquitectura">Arquitectura</option>
+          <option value="Biología">Biología</option>
+          <option value="Comunicación Social">Comunicación Social</option>
+          <option value="Contaduría Pública">Contaduría Pública</option>
+          <option value="Derecho">Derecho</option>
+          <option value="Diseño Gráfico">Diseño Gráfico</option>
+          <option value="Economía">Economía</option>
+          <option value="Educación Física">Educación Física</option>
+          <option value="Enfermería">Enfermería</option>
+          <option value="Finanzas">Finanzas</option>
+          <option value="Fisioterapia">Fisioterapia</option>
+          <option value="Ingeniería química">Ingeniería química</option>
+          <option value="Ingeniería civil">Ingeniería civil</option>
+          <option value="Ingeniería electrónica">Ingeniería electrónica</option>
+          <option value="Ingeniería eléctrica">Ingeniería eléctrica</option>
+          <option value="Ingeniería industrial">Ingeniería industrial</option>
+          <option value="Ingeniería mecatrónica">Ingeniería mecatrónica</option>
+          <option value="Ingeniería de sistemas">Ingeniería de sistemas</option>
+          <option value="Lenguas Modernas">Lenguas Modernas</option>
+          <option value="Medicina">Medicina</option>
+          <option value="Mercadeo">Mercadeo</option>
+          <option value="Nutrición y Dietética">Nutrición y Dietética</option>
+          <option value="Odontología">Odontología</option>
+          <option value="Psicología">Psicología</option>
+          <option value="Publicidad">Publicidad</option>
+          <option value="Sociología">Sociología</option>
+          <option value="Trabajo Social">Trabajo Social</option>
+          <option value="Turismo y Hotelería">Turismo y Hotelería</option>
         </select>
       </div>
     </div>
@@ -133,7 +156,11 @@
       </button>
     </div>
     <div class="col-6">
-      <button type="submit" class="btn btn-success btn-lg btn-block mt-2">
+      <button
+        type="submit"
+        class="btn btn-success btn-lg btn-block mt-2"
+        [disabled]="isSubmitting"
+      >
         <i class="bi bi-floppy-fill"></i> Matricular
       </button>
     </div>
