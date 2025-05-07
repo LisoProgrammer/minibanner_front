@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';  // Importa HttpClient y provideHttpClient
 import { RouterOutlet } from '@angular/router';
-import { FormConsultarStdComponent } from "./form-consultar-std/form-consultar-std.component";
+import { FormConsultarStdComponent } from './form-consultar-std/form-consultar-std.component';
 import { TableStdComponent } from './table-std/table-std.component';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormConsultarStdComponent, TableStdComponent],
+  standalone: true,  // Define el componente como standalone
+  imports: [RouterOutlet, FormConsultarStdComponent, TableStdComponent],  // Agrega tus otros componentes aquí
+  providers: [
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'minibanner';
