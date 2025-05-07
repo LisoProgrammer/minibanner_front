@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let alumno of datos">
+    <tr *ngFor="let alumno of alumnos">
       <td>{{ alumno.identificacion }}</td>
       <td>
         {{ alumno.primer_nombre }} {{ alumno.segundo_nombre }}
@@ -38,7 +38,7 @@
         <button class="btn btn-secondary btn-sm" (click)="selectAlumno(alumno)">
           <i class="bi bi-pencil-square"></i>
         </button>
-        <button class="btn btn-danger btn-sm" (click)="selectAlumno(alumno)">
+        <button class="btn btn-danger btn-sm" (click)="deleteAlumno(alumno.identificacion)">
           <i class="bi bi-trash3-fill"></i>
         </button>
       </td>
