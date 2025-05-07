@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AlumnosService } from '../servicios/alumnos/alumnos.service';
 @Component({
   selector: 'app-table-std',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './table-std.component.html',
   styleUrls: ['./table-std.component.css'],
