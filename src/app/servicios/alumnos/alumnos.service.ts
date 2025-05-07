@@ -18,4 +18,18 @@ export class AlumnosService {
     console.log("Estudiante eliminado");
     return this.http.get(this.url+"delete_alumno.php?id_alumno="+id_alumno);
   }
+  insertAlumno(data: any){
+    this.http.post(this.url+'insert_alumno.php', data)
+      .subscribe({
+        next: response => {
+          console.log('Respuesta del servidor:', response);
+          window.location.reload();
+          alert('Alumno creado correctamente.');
+        },
+        error: error => {
+          console.error('Error al enviar:', error);
+          alert('Error al enviar los datos.');
+        }
+      });
+  }
 }

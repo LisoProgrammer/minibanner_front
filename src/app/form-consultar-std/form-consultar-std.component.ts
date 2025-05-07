@@ -2,17 +2,18 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AlumnosService } from '../servicios/alumnos/alumnos.service';
 @Component({
   standalone: true,
   selector: 'app-form-consultar-std',
   templateUrl: './form-consultar-std.component.html',
   styleUrls: ['./form-consultar-std.component.css'],
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule]
 })
 export class FormConsultarStdComponent {
   formStudent: FormGroup;
   isSubmitting = false;
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private AlumnoService: AlumnosService, private fb: FormBuilder, private http: HttpClient) {
     this.formStudent = this.fb.group({
       primer_nombre: [''],
       segundo_nombre: [''],
@@ -21,6 +22,7 @@ export class FormConsultarStdComponent {
       semestre: [0],
       carrera: [0],
     });
+    this.AlumnoService = AlumnoService;
   }
 
   enviar() {
@@ -28,21 +30,8 @@ export class FormConsultarStdComponent {
       alert("Formulario incompleto");
       return;
     }
-  
     const datos = this.formStudent.value;
     console.log('Enviando datos:', datos);
-  
-    this.http.post('http://127.0.0.1:80/minibanner_backend/backend_minibanner/apis/alumnos/insert_alumno.php', datos)
-      .subscribe({
-        next: response => {
-          console.log('Respuesta del servidor:', response);
-          window.location.reload();
-          alert('Alumno creado correctamente.');
-        },
-        error: error => {
-          console.error('Error al enviar:', error);
-          alert('Error al enviar los datos.');
-        }
-      });
+    this.AlumnoService.insertAlumno(datos);
   }
 }
