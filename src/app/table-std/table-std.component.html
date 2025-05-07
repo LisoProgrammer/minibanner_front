@@ -98,11 +98,7 @@
         <div class="d-flex w-100 align-items-center">
           <div class="flex-grow-1 me-2">
             <select class="form-select w-100">
-              <option value="">Materia 1 (2 créditos)</option>
-              <option value="">Materia 2 (4 créditos)</option>
-              <option value="">Materia 3 (3 créditos)</option>
-              <option value="">Materia 4 (2 créditos)</option>
-              <option value="">Materia 5 (4 créditos)</option>
+              <option *ngFor="let materia of materias" value="{{materia.code}}">{{materia.nombre}} ({{materia.creditos}} créditos)</option>
             </select>
           </div>
           <div>
