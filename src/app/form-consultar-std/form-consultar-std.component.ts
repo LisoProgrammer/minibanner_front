@@ -21,6 +21,7 @@ export class FormConsultarStdComponent {
       segundo_apellido: [''],
       semestre: [0],
       carrera: [0],
+      password: ['']
     });
     this.AlumnoService = AlumnoService;
   }

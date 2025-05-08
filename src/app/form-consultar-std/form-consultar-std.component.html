@@ -84,7 +84,7 @@
           formControlName="semestre"
           value="0"
         >
-          <option value="0">Seleccione...</option>
+          <option value="0">Semestre...</option>
           <option value="1">1° semestre</option>
           <option value="2">2° semestre</option>
           <option value="3">3° semestre</option>
@@ -113,7 +113,7 @@
           formControlName="carrera"
           value="0"
         >
-          <option value="0">Seleccione...</option>
+          <option value="0">Carrera...</option>
           <option value="Administración de Empresas">
             Administración de Empresas
           </option>
@@ -146,6 +146,24 @@
           <option value="Trabajo Social">Trabajo Social</option>
           <option value="Turismo y Hotelería">Turismo y Hotelería</option>
         </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <label class="sr-only" for="segundo_app">Contraseña</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="bi bi-hash"></i></div>
+        </div>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Contraseña"
+          formControlName="password"
+          required
+        />
       </div>
     </div>
   </div>
