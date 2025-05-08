@@ -6,11 +6,12 @@ import { TableStdComponent } from '../table-std/table-std.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnosService } from '../servicios/alumnos/alumnos.service';
 import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-profesor',
   standalone: true,
-  imports: [RouterOutlet, FormConsultarStdComponent, TableStdComponent, ReactiveFormsModule],
+  imports: [RouterOutlet, FormConsultarStdComponent, TableStdComponent, ReactiveFormsModule, NavbarComponent],
   providers: [AlumnosService, AuthService],
   templateUrl: './profesor.component.html',
   styleUrl: './profesor.component.css'
