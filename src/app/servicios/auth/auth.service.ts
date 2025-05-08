@@ -25,4 +25,9 @@ export class AuthService {
       withCredentials: true // Importante para enviar cookies de sesión
     });
   }
+  logout(): Observable<any> {
+    return this.http.post(this.url+'logout.php', {}, {
+      withCredentials: true
+    });
+  }
 }
