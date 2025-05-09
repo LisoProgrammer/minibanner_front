@@ -4,4 +4,5 @@ export interface Persona{
     segundo_nombre: string;
     primer_apellido: string;
     segundo_apellido: string;
+    password: string;
 }
