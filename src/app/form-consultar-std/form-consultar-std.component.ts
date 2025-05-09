@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnosService } from '../servicios/alumnos/alumnos.service';
 import { CommonModule } from '@angular/common';
+declare let Swal: any;
 @Component({
   standalone: true,
   selector: 'app-form-consultar-std',
@@ -35,7 +36,7 @@ export class FormConsultarStdComponent {
   ngOnInit() {
     console.log(this.AlumnoService);
     this.AlumnoService.alumnoSeleccionado$.subscribe((alumno) => {
-      console.log(alumno)
+      console.log(alumno);
       if (alumno) {
         this.mode = 'Actualizar';
         this.id_persona = alumno.identificacion;
@@ -53,7 +54,12 @@ export class FormConsultarStdComponent {
   }
   enviar() {
     if (this.formStudent.invalid) {
-      alert('Formulario incompleto');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Revisa los campos vacíos',
+        footer: '',
+      });
       return;
     }
     if (this.mode == 'Matricular') {
@@ -69,16 +75,16 @@ export class FormConsultarStdComponent {
     }
   }
   change_mode() {
-  this.mode = 'Matricular';
-  this.formStudent.reset({
-    primer_nombre: '',
-    segundo_nombre: '',
-    primer_apellido: '',
-    segundo_apellido: '',
-    semestre: 0,
-    carrera: 0,
-    password: '',
-  });
-  this.id_persona = 0;
-}
+    this.mode = 'Matricular';
+    this.formStudent.reset({
+      primer_nombre: '',
+      segundo_nombre: '',
+      primer_apellido: '',
+      segundo_apellido: '',
+      semestre: 0,
+      carrera: 0,
+      password: '',
+    });
+    this.id_persona = 0;
+  }
 }
