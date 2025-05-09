@@ -14,8 +14,7 @@ export class MateriasService {
     this.http.post(this.url + 'matri_materia.php', data).subscribe({
       next: (response) => {
         console.log('Respuesta del servidor:', response);
-        window.location.reload();
-        alert('Alumno matriculado correctamente.');
+        console.log('Alumno matriculado correctamente.');
       },
       error: (error) => {
         console.error('Error al enviar:', error);
