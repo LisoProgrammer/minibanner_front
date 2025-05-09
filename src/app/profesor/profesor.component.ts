@@ -26,8 +26,9 @@ export class ProfesorComponent implements OnInit {
   ngOnInit(): void {
     this.authService.check_sesion().subscribe({
       next: (res) => {
-        if (!res.loggIn || res.user.rol !== 1) {
-          alert('Acceso denegado. Debe iniciar sesión como profesor.'+res.authenticated+" "+res.user.rol);
+        console.log(res)
+        if (!res.log_in) {
+          alert('Acceso denegado. Debe iniciar sesión como profesor.');
           this.router.navigate(['/login']);
         }
       },
