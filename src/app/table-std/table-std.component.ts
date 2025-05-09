@@ -118,6 +118,7 @@ export class TableStdComponent {
           nota_2: 0,
           nota_3: 0,
           promedio: 0,
+          obs: ""
         };
         this.alumnoSeleccionado?.materias.push(new_materia);
         break;

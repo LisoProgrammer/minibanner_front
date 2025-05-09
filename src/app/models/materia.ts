@@ -6,4 +6,5 @@ export interface Materia{
     nota_2: number;
     nota_3: number;
     promedio: number;
+    obs: string;
 }

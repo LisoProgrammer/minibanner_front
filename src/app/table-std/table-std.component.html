@@ -131,11 +131,12 @@
               <th scope="col">2C (35%)</th>
               <th scope="col">3C (35%)</th>
               <th scope="col" class="text-center">DEF</th>
+              <th scope="col" class="">Observaciones</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let materia of alumnoSeleccionado?.materias">
-              <td class="col-md-2">
+              <td class="col-auto">
                 {{ materia.code }}
               </td>
               <td class="col-md-3">
@@ -170,6 +171,9 @@
               </td>
               <td class="col-md-2 text-center">
                 {{ materia.promedio }}
+              </td>
+              <td class="col-md-2 text-center">
+                <textarea name="" id="" class="form-control" value="{{materia.obs}}"></textarea>
               </td>
             </tr>
           </tbody>
