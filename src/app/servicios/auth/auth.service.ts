@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'http://127.0.0.1:80/minibanner_backend/backend_minibanner/auth/';
+  private url = 'http://localhost:80/minibanner_backend/backend_minibanner/auth/';
 
   constructor(private http: HttpClient) {}
 

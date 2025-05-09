@@ -7,7 +7,7 @@ import { Alumno } from '../../models/alumno';
 })
 export class AlumnosService {
 
-  private url = 'http://127.0.0.1:80/minibanner_backend/backend_minibanner/apis/alumnos/'; // Replace with your API URL
+  private url = 'http://localhost:80/minibanner_backend/backend_minibanner/apis/alumnos/'; // Replace with your API URL
   private alumnoSeleccionadoSource = new BehaviorSubject<Alumno | null>(null);
   alumnoSeleccionado$ = this.alumnoSeleccionadoSource.asObservable();
   constructor(private http: HttpClient) { }
