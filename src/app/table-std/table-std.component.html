@@ -102,8 +102,9 @@
           <div class="d-flex w-100 align-items-center">
             <div class="flex-grow-1 me-2">
               <select class="form-select w-100" formControlName="materia">
+                <option value="0">Seleccione una materia a matricular...</option>
                 <option
-                  *ngFor="let materia of materias"
+                  *ngFor="let materia of materias_que_puede_matricular_alumno"
                   value="{{ materia.code }}"
                 >
                   {{ materia.nombre }} ({{ materia.creditos }} créditos)
