@@ -168,19 +168,26 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
-      <button type="button" class="btn btn-danger btn-lg btn-block mt-2">
-        <i class="bi bi-x-circle-fill"></i> Cancelar
-      </button>
-    </div>
-    <div class="col-6">
-      <button
-        type="submit"
-        class="btn btn-success btn-lg btn-block mt-2"
-        [disabled]="isSubmitting"
-      >
-        <i class="bi bi-floppy-fill"></i> Matricular
-      </button>
-    </div>
+  <!-- Botón Cancelar solo visible en modo Actualizar -->
+  <div *ngIf="mode === 'Actualizar'" class="col-6">
+    <button
+      type="button"
+      class="btn btn-danger btn-lg btn-block mt-2"
+      (click)="change_mode()"
+    >
+      <i class="bi bi-x-circle-fill"></i> Cancelar
+    </button>
   </div>
+
+  <!-- Botón de acción (Matricular o Actualizar) -->
+  <div [class.col-6]="mode === 'Actualizar'" [class.col-12]="mode !== 'Actualizar'">
+    <button
+      type="submit"
+      class="btn btn-success btn-lg btn-block mt-2"
+      [disabled]="isSubmitting"
+    >
+      <i class="bi bi-floppy-fill"></i> {{ mode }}
+    </button>
+  </div>
+</div>
 </form>

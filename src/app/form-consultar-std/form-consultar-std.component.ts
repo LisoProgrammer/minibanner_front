@@ -3,12 +3,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnosService } from '../servicios/alumnos/alumnos.service';
+import { CommonModule } from '@angular/common';
 @Component({
   standalone: true,
   selector: 'app-form-consultar-std',
   templateUrl: './form-consultar-std.component.html',
   styleUrls: ['./form-consultar-std.component.css'],
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
 })
 export class FormConsultarStdComponent {
   formStudent: FormGroup;
@@ -32,9 +33,11 @@ export class FormConsultarStdComponent {
     this.AlumnoService = AlumnoService;
   }
   ngOnInit() {
+    console.log(this.AlumnoService);
     this.AlumnoService.alumnoSeleccionado$.subscribe((alumno) => {
-      this.mode = 'Actualizar';
+      console.log(alumno)
       if (alumno) {
+        this.mode = 'Actualizar';
         this.id_persona = alumno.identificacion;
         this.formStudent.patchValue({
           primer_nombre: alumno.primer_nombre,
@@ -57,7 +60,7 @@ export class FormConsultarStdComponent {
       const datos = this.formStudent.value;
       console.log('Enviando datos:', datos);
       this.AlumnoService.insertAlumno(datos);
-    }else if(this.mode == "Actualizar"){
+    } else if (this.mode == 'Actualizar') {
       const datos = this.formStudent.value;
       datos.identificacion = this.id_persona;
       console.log(datos);
@@ -65,4 +68,17 @@ export class FormConsultarStdComponent {
       this.AlumnoService.updateAlumno(datos);
     }
   }
+  change_mode() {
+  this.mode = 'Matricular';
+  this.formStudent.reset({
+    primer_nombre: '',
+    segundo_nombre: '',
+    primer_apellido: '',
+    segundo_apellido: '',
+    semestre: 0,
+    carrera: 0,
+    password: '',
+  });
+  this.id_persona = 0;
+}
 }
