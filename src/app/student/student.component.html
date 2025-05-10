@@ -24,25 +24,25 @@
               <td class="col-auto">
                 {{materia.code}}
               </td>
-              <td class="col-md-3">
+              <td class="col-auto">
                 {{materia.nombre}}
               </td>
-              <td class="col-md-1">
+              <td class="col-auto">
                 {{materia.creditos}}
               </td>
-              <td class="col-md-1">
+              <td class="col-auto">
                 {{materia.nota_1}}
               </td>
-              <td class="col-md-1">
+              <td class="col-auto">
                 {{materia.nota_2}}
               </td>
-              <td class="col-md-1">
-                {{materia.nota_3}}
+              <td class="col-auto" [ngClass]="materia.prediccion ? (materia.nota_3 > 3 ? 'text-danger' : 'text-success') : ''">
+                <span>{{materia.nota_3}}</span> <span *ngIf="materia.prediccion" class="ml-2">(Para aprobar)</span>
               </td>
-              <td class="col-md-2 text-center">
+              <td class="col-auto text-center">
                 {{materia.promedio}}
               </td>
-              <td class="col-md-2">
+              <td class="col-auto">
                 {{materia.obs}}
               </td>
             </tr>
