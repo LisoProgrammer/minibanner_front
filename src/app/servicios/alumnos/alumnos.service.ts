@@ -51,4 +51,9 @@ export class AlumnosService {
         }
       });
   }
+  guardarNotas(data: any) {
+  return this.http.post(this.url+'notas/change_nota.php', data, {
+    withCredentials: true
+  });
+}
 }

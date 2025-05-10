@@ -98,21 +98,25 @@
             </tr>
           </tbody>
         </table>
-        <form [formGroup]="formMateria">
+
+        <!-- Selección de materia -->
+        <form [formGroup]="formMateria" (ngSubmit)="matricularMateria()">
           <div class="d-flex w-100 align-items-center">
             <div class="flex-grow-1 me-2">
               <select class="form-select w-100" formControlName="materia">
-                <option value="0">Seleccione una materia a matricular...</option>
+                <option value="0">
+                  Seleccione una materia a matricular...
+                </option>
                 <option
                   *ngFor="let materia of materias_que_puede_matricular_alumno"
-                  value="{{ materia.code }}"
+                  [value]="materia.code"
                 >
                   {{ materia.nombre }} ({{ materia.creditos }} créditos)
                 </option>
               </select>
             </div>
             <div>
-              <button class="btn btn-success w-100" (click)="matricularMateria()">
+              <button type="submit" class="btn btn-success w-100">
                 <i class="bi bi-plus-square"></i>
                 Matricular Materia
               </button>
@@ -121,69 +125,95 @@
         </form>
 
         <!-- Materias del Alumno -->
-        <table class="table text-left">
-          <thead>
-            <tr>
-              <th scope="col">CODE</th>
-              <th scope="col">Mat.</th>
-              <th scope="col">CRE</th>
-              <th scope="col">1C (30%)</th>
-              <th scope="col">2C (35%)</th>
-              <th scope="col">3C (35%)</th>
-              <th scope="col" class="text-center">DEF</th>
-              <th scope="col" class="">Observaciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let materia of alumnoSeleccionado?.materias">
-              <td class="col-auto">
-                {{ materia.code }}
-              </td>
-              <td class="col-md-3">
-                {{ materia.nombre }}
-              </td>
-              <td class="col-md-1">
-                {{ materia.creditos }}
-              </td>
-              <td class="col-md-1">
-                <input
-                  type="number"
-                  class="form-control form-control-sm"
-                  placeholder="Nota 1"
-                  [value]="materia.nota_1"
-                />
-              </td>
-              <td class="col-md-1">
-                <input
-                  type="number"
-                  class="form-control form-control-sm"
-                  placeholder="Nota 2"
-                  [value]="materia.nota_2"
-                />
-              </td>
-              <td class="col-md-1">
-                <input
-                  type="number"
-                  class="form-control form-control-sm"
-                  placeholder="Nota 3"
-                  [value]="materia.nota_3"
-                />
-              </td>
-              <td class="col-md-2 text-center">
-                {{ materia.promedio }}
-              </td>
-              <td class="col-md-2 text-center">
-                <textarea name="" id="" class="form-control" value="{{materia.obs}}"></textarea>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cerrar
-        </button>
-        <button type="button" class="btn btn-primary">Guardar cambios</button>
+        <form>
+          <div class="table-responsive mt-3">
+            <table class="table text-left">
+              <thead>
+                <tr>
+                  <th scope="col">CODE</th>
+                  <th scope="col">Mat.</th>
+                  <th scope="col">CRE</th>
+                  <th scope="col">1C (30%)</th>
+                  <th scope="col">2C (35%)</th>
+                  <th scope="col">3C (35%)</th>
+                  <th scope="col" class="text-center">DEF</th>
+                  <th scope="col">Observaciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let materia of alumnoSeleccionado?.materias">
+                  <td>{{ materia.code }}</td>
+                  <td>{{ materia.nombre }}</td>
+                  <td>{{ materia.creditos }}</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      placeholder="Nota 1"
+                      style="appearance: textfield"
+                      [value]="materia.nota_1"
+                      (keyup)="change_nota(materia, 1, $event)"
+                      min="0"
+                      max="5"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      placeholder="Nota 2"
+                      style="appearance: textfield"
+                      [value]="materia.nota_2"
+                      (keyup)="change_nota(materia, 2, $event)"
+                      min="0"
+                      max="5"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      placeholder="Nota 3"
+                      style="appearance: textfield"
+                      [value]="materia.nota_3"
+                      (keyup)="change_nota(materia, 3, $event)"
+                      min="0"
+                      max="5"
+                    />
+                  </td>
+                  <td class="text-center">
+                    {{ materia.promedio }}
+                  </td>
+                  <td>
+                    <textarea
+                      class="form-control"
+                      [value]="materia.obs"
+                      (keyup)="change_obs(materia, $event)"
+                    ></textarea>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Botones del modal -->
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="guardarNotas()"
+            >
+              Guardar cambios
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

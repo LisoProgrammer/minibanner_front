@@ -18,6 +18,7 @@ declare let Swal: any;
 export class TableStdComponent {
   formMateria: FormGroup;
   alumnoSeleccionado: Alumno | null = null;
+  materias_a_actualizar: Materia[] | null = [];
   alumnos: any[] = [];
   materias: any[] = [];
   materias_que_puede_matricular_alumno: any[] = [];
@@ -100,6 +101,51 @@ export class TableStdComponent {
     console.log(alumno);
     this.cargarMaterias();
   }
+  change_nota(materia: Materia, numero: number, event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const valor = parseFloat(input.value);
+
+    if (isNaN(valor)) return;
+
+    switch (numero) {
+      case 1:
+        materia.nota_1 = valor;
+        break;
+      case 2:
+        materia.nota_2 = valor;
+        break;
+      case 3:
+        materia.nota_3 = valor;
+        break;
+    }
+
+    // Calcula promedio automáticamente (opcional)
+    materia.promedio = Number(
+      (
+        materia.nota_1 * 0.3 +
+        materia.nota_2 * 0.35 +
+        materia.nota_3 * 0.35
+      ).toFixed(2)
+    );
+    let i = 0;
+    for(let materia_s of this.materias){
+      i++;
+      if(materia_s.code == materia.code){
+        this.materias.splice(i,1)
+      }
+    }
+  }
+  change_obs(materia: Materia, event: Event) {
+    const textarea = event.target as HTMLInputElement;
+    materia.obs = textarea.value;
+    let i = 0;
+    for(let materia_s of this.materias){
+      i++;
+      if(materia_s.code == materia.code){
+        this.materias.splice(i,1)
+      }
+    }
+  }
   matricularMateria() {
     const materia_code = this.formMateria.get('materia')?.value;
     let datos = {
@@ -118,7 +164,7 @@ export class TableStdComponent {
           nota_2: 0,
           nota_3: 0,
           promedio: 0,
-          obs: ""
+          obs: '',
         };
         this.alumnoSeleccionado?.materias.push(new_materia);
         break;
@@ -138,7 +184,40 @@ export class TableStdComponent {
       footer: '',
     });
     this.formMateria.patchValue({
-      materia: 0
-    })
+      materia: 0,
+    });
   }
+  empaquetarNotas(): Materia[] {
+  const materiasFiltradas: Materia[] = [];
+
+  const codigosSet = new Set<string>();
+
+  for (let materia of this.alumnoSeleccionado?.materias || []) {
+    if (!codigosSet.has(materia.code)) {
+      codigosSet.add(materia.code);
+      materiasFiltradas.push(materia);
+    }
+  }
+
+  return materiasFiltradas;
+}
+guardarNotas(): void {
+  if (!this.alumnoSeleccionado) return;
+
+  const datos = {
+    id_alumno: this.alumnoSeleccionado.identificacion,
+    materias: this.empaquetarNotas(),
+  };
+
+  this.alumnosService.guardarNotas(datos).subscribe(
+    (res: any) => {
+      Swal.fire('Notas actualizadas correctamente', '', 'success');
+      console.log(res);
+    },
+    (err: any) => {
+      Swal.fire('Error al guardar', '', 'error');
+      console.error(err);
+    }
+  );
+}
 }
