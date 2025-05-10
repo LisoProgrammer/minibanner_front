@@ -103,9 +103,11 @@ export class TableStdComponent {
   }
   change_nota(materia: Materia, numero: number, event: Event): void {
     const input = event.target as HTMLInputElement;
-    const valor = parseFloat(input.value);
+    let valor:any = parseFloat(input.value);
 
-    if (isNaN(valor)) return;
+    if (isNaN(valor)){
+      valor = null;
+    } 
 
     switch (numero) {
       case 1:
