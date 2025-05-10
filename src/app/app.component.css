@@ -1,8 +1,28 @@
-*{
-    font-family: sans-serif;
-    box-sizing: border-box;
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
 }
-div.center{
-    display: flex;
-    justify-content: center;
+div.center {
+  display: flex;
+  justify-content: center;
+}
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield !important;
+}
+
+/* General fallback */
+input[type="number"] {
+  appearance: textfield !important;
+}
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
