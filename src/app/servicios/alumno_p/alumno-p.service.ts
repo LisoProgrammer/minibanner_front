@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Materia } from '../../models/materia';
+import { MateriaPre } from '../../models/materia_pre';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class AlumnoPService {
   constructor(private http: HttpClient) {}
 
   getMyNotes() {
-    return this.http.get<Materia[]>(this.url + 'notas/my_notas.php', {
+    return this.http.get<MateriaPre[]>(this.url + 'notas/my_notas.php', {
       withCredentials: true
     });
   }
