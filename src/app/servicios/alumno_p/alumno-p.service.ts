@@ -15,4 +15,9 @@ export class AlumnoPService {
       withCredentials: true
     });
   }
+  getMetrics(){
+    return this.http.get<MateriaPre[]>(this.url + 'metrics/get_metrics.php', {
+      withCredentials: true
+    });
+  }
 }
