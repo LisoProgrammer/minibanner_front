@@ -1,2 +1,35 @@
 <app-navbar></app-navbar>
-<p>datap works!</p>
+<div class="container my-4">
+  <h1 class="mt-4 mb-4">Mis datos</h1>
+  <div class="row">
+    <table class="table text-left">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre Completo</th>
+          <th scope="col">Título</th>
+          <th scope="col">Especializacion</th>
+          <th scope="col">Fecha de entrada</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="profesor">
+        <tr>
+          <td>{{ profesor?.identificacion }}</td>
+          <td>
+            {{ profesor?.primer_nombre }}
+            {{ profesor?.segundo_nombre }}
+            {{ profesor?.primer_apellido }}
+            {{ profesor?.segundo_apellido }}
+          </td>
+          <td>{{ profesor?.titulo }}</td>
+          <td>{{ profesor?.esp }}</td>
+          <td>{{ profesor?.f_ent }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <app-form-change-pass *ngIf="profesor !== null"></app-form-change-pass>
+  </div>
+</div>
+
