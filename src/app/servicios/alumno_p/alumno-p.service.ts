@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MateriaPre } from '../../models/materia_pre';
-
+import { Alumno } from '../../models/alumno';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +17,11 @@ export class AlumnoPService {
   }
   getMetrics(){
     return this.http.get<MateriaPre[]>(this.url + 'metrics/get_metrics.php', {
+      withCredentials: true
+    });
+  }
+  getMyInfo(){
+    return this.http.get<Alumno>(this.url + 'my_info.php', {
       withCredentials: true
     });
   }
