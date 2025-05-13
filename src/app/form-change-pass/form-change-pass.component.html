@@ -1,0 +1,19 @@
+<h2 class="mt-1 mb-3">Actualizar contraseña</h2>
+<form [formGroup]="form" (ngSubmit)="cambiarContrasena()">
+  <div class="mb-3">
+    <label for="actual" class="form-label">Contraseña actual</label>
+    <input type="password" class="form-control w-50" id="actual" formControlName="actual" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="nueva" class="form-label">Nueva contraseña</label>
+    <input type="password" class="form-control w-50" id="nueva" formControlName="nueva" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="confirmar" class="form-label">Confirmar nueva contraseña</label>
+    <input type="password" class="form-control w-50" id="confirmar" formControlName="confirmar" required />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Cambiar contraseña</button>
+</form>
