@@ -103,11 +103,11 @@ export class TableStdComponent {
   }
   change_nota(materia: Materia, numero: number, event: Event): void {
     const input = event.target as HTMLInputElement;
-    let valor:any = parseFloat(input.value);
+    let valor: any = parseFloat(input.value);
 
-    if (isNaN(valor)){
+    if (isNaN(valor)) {
       valor = null;
-    } 
+    }
 
     switch (numero) {
       case 1:
@@ -130,10 +130,10 @@ export class TableStdComponent {
       ).toFixed(2)
     );
     let i = 0;
-    for(let materia_s of this.materias){
+    for (let materia_s of this.materias) {
       i++;
-      if(materia_s.code == materia.code){
-        this.materias.splice(i,1)
+      if (materia_s.code == materia.code) {
+        this.materias.splice(i, 1);
       }
     }
   }
@@ -141,10 +141,10 @@ export class TableStdComponent {
     const textarea = event.target as HTMLInputElement;
     materia.obs = textarea.value;
     let i = 0;
-    for(let materia_s of this.materias){
+    for (let materia_s of this.materias) {
       i++;
-      if(materia_s.code == materia.code){
-        this.materias.splice(i,1)
+      if (materia_s.code == materia.code) {
+        this.materias.splice(i, 1);
       }
     }
   }
@@ -179,47 +179,57 @@ export class TableStdComponent {
       }
     }
     console.log(this.alumnoSeleccionado);
-    Swal.fire({
-      icon: 'success',
-      title: 'It´s ok',
-      text: 'La materia ha sido matriculada',
-      footer: '',
-    });
+    if (this.formMateria.get('materia')?.value != 0) {
+      Swal.fire({
+        icon: 'success',
+        title: 'It´s ok',
+        text: 'La materia ha sido matriculada',
+        footer: '',
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Seleccione una materia',
+        text: 'Para poder matricularla',
+        footer: '',
+      });
+    }
+
     this.formMateria.patchValue({
       materia: 0,
     });
   }
   empaquetarNotas(): Materia[] {
-  const materiasFiltradas: Materia[] = [];
+    const materiasFiltradas: Materia[] = [];
 
-  const codigosSet = new Set<string>();
+    const codigosSet = new Set<string>();
 
-  for (let materia of this.alumnoSeleccionado?.materias || []) {
-    if (!codigosSet.has(materia.code)) {
-      codigosSet.add(materia.code);
-      materiasFiltradas.push(materia);
+    for (let materia of this.alumnoSeleccionado?.materias || []) {
+      if (!codigosSet.has(materia.code)) {
+        codigosSet.add(materia.code);
+        materiasFiltradas.push(materia);
+      }
     }
+
+    return materiasFiltradas;
   }
+  guardarNotas(): void {
+    if (!this.alumnoSeleccionado) return;
 
-  return materiasFiltradas;
-}
-guardarNotas(): void {
-  if (!this.alumnoSeleccionado) return;
+    const datos = {
+      id_alumno: this.alumnoSeleccionado.identificacion,
+      materias: this.empaquetarNotas(),
+    };
 
-  const datos = {
-    id_alumno: this.alumnoSeleccionado.identificacion,
-    materias: this.empaquetarNotas(),
-  };
-
-  this.alumnosService.guardarNotas(datos).subscribe(
-    (res: any) => {
-      Swal.fire('Notas actualizadas correctamente', '', 'success');
-      console.log(res);
-    },
-    (err: any) => {
-      Swal.fire('Error al guardar', '', 'error');
-      console.error(err);
-    }
-  );
-}
+    this.alumnosService.guardarNotas(datos).subscribe(
+      (res: any) => {
+        Swal.fire('Notas actualizadas correctamente', '', 'success');
+        console.log(res);
+      },
+      (err: any) => {
+        Swal.fire('Error al guardar', '', 'error');
+        console.error(err);
+      }
+    );
+  }
 }
