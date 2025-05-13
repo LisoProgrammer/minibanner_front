@@ -30,4 +30,9 @@ export class AuthService {
       withCredentials: true
     });
   }
+  change_pass(pass: string, new_pass: string): Observable<any>{
+    return this.http.post(this.url+'change_pass.php', {"pass": pass, "new_pass": new_pass}, {
+      withCredentials: true
+    });
+  }
 }
