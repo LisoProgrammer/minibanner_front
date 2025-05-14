@@ -27,8 +27,14 @@ export class AlumnosService {
     this.http.post(this.url + 'insert_alumno.php', data).subscribe({
       next: (response) => {
         console.log('Respuesta del servidor:', response);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'El alumno se insertó con éxito.',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         window.location.reload();
-        alert('Alumno creado correctamente.');
       },
       error: (error) => {
         console.error('Error al enviar:', error);
@@ -41,7 +47,13 @@ export class AlumnosService {
       next: (response) => {
         console.log('Respuesta del servidor:', response);
         window.location.reload();
-        alert('Alumno actualizado correctamente.');
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'El alumno se actualizó con éxito.',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       },
       error: (error) => {
         console.error('Error al enviar:', error);
