@@ -5,6 +5,7 @@ import {
   ElementRef,
   AfterViewInit,
   OnDestroy,
+  NgZone,
   ChangeDetectorRef
 } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
@@ -160,7 +161,6 @@ export class StaticspComponent implements OnInit, AfterViewInit, OnDestroy {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
         plugins: {
           title: {
             display: true,
