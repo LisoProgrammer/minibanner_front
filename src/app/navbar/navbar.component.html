@@ -1,0 +1,46 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<!-- Mostrar navbar solo cuando ya se verificó la sesión -->
+<nav *ngIf="sesionVerificada && user" class="navbar navbar-light navbar-expand-lg bg-light">
+  <div class="navbar-brand flex">
+    <div>
+      <img src="assets/minibanner.png" alt="Minibanner" width="40px" style="border-radius: 3px;">
+    </div>
+    <div>
+      <h3><span style="color: #0c5cb4">Mini</span><span style="color: #cb6ce6">Banner</span></h3>
+    </div>
+  </div>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item" [ngClass]="{'active': route == '/profesor' || route == '/student'}">
+        <a class="nav-link" (click)="go_home()">Página principal</a>
+      </li>
+      <li class="nav-item" [ngClass]="{'active': route == '/profesor/data' || route == '/student/data'}">
+        <a class="nav-link" (click)="go_data()">Mis datos</a>
+      </li>
+      <li class="nav-item" [ngClass]="{'active': route == '/profesor/statics' || route == '/student/statics'}">
+        <a class="nav-link" (click)="go_statics()">Estadísticas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="cerrarSesion()">Cerrar sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Mostrar un mensaje mientras se verifica -->
+<div *ngIf="!sesionVerificada" class="text-center mt-3 text-muted">
+  Verificando sesión...
+</div>

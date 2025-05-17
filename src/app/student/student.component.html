@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="container-fluid text-center">
+    <h1 class="mt-4 mb-4">Mis notas</h1>
+    <div>
+        <!-- Materias del Alumno -->
+        <table class="table text-left">
+          <thead>
+            <tr>
+              <th scope="col">CODE</th>
+              <th scope="col">Mat.</th>
+              <th scope="col">CRE</th>
+              <th scope="col">1C (30%)</th>
+              <th scope="col">2C (35%)</th>
+              <th scope="col">3C (35%)</th>
+              <th scope="col" class="text-center">DEF</th>
+              <th scope="col" class="text-center">Observaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let materia of materias">
+              <td class="col-auto">
+                {{materia.code}}
+              </td>
+              <td class="col-auto">
+                {{materia.nombre}}
+              </td>
+              <td class="col-auto">
+                {{materia.creditos}}
+              </td>
+              <td class="col-auto">
+                {{materia.nota_1}}
+              </td>
+              <td class="col-auto">
+                {{materia.nota_2}}
+              </td>
+              <td class="col-auto" [ngClass]="materia.prediccion ? (materia.nota_3 > 3 ? 'text-danger' : 'text-success') : ''">
+                <span>{{materia.nota_3}}</span> <span *ngIf="materia.prediccion" class="ml-2">(Para aprobar)</span>
+              </td>
+              <td class="col-auto text-center">
+                {{materia.promedio}}
+              </td>
+              <td class="col-auto">
+                {{materia.obs}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>

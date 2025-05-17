@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<div class="container my-4">
+  <h1 class="mt-4 mb-4">Mis datos</h1>
+  <div class="row">
+    <table class="table text-left">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre Completo</th>
+          <th scope="col">Carrera</th>
+          <th scope="col">Semestre</th>
+          <th scope="col">Promedio</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="alumno">
+        <tr>
+          <td>{{ alumno?.identificacion }}</td>
+          <td>
+            {{ alumno?.primer_nombre }}
+            {{ alumno?.segundo_nombre }}
+            {{ alumno?.primer_apellido }}
+            {{ alumno?.segundo_apellido }}
+          </td>
+          <td>{{ alumno?.carrera }}</td>
+          <td>{{ alumno?.semestre }}</td>
+          <td>{{ alumno?.promedio }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <app-form-change-pass *ngIf="alumno !== null"></app-form-change-pass>
+  </div>
+</div>

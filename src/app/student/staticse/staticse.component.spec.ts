@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableGradesComponent } from './table-grades.component';
+import { StaticseComponent } from './staticse.component';
 
-describe('TableGradesComponent', () => {
-  let component: TableGradesComponent;
-  let fixture: ComponentFixture<TableGradesComponent>;
+describe('StaticseComponent', () => {
+  let component: StaticseComponent;
+  let fixture: ComponentFixture<StaticseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TableGradesComponent]
+      imports: [StaticseComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TableGradesComponent);
+    fixture = TestBed.createComponent(StaticseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

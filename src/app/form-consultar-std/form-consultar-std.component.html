@@ -1,81 +1,193 @@
-<form action="" class="form">
-    <div class="row">
-        <div class="col-12">
-            <label class="sr-only" for="primer_nombre">Primer nombre</label>
-            <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="bi bi-fonts"></i></div>
-                </div>
-                <input type="text" class="form-control" id="primer_nombre" placeholder="Primer nombre">
-            </div>
+<form class="form" [formGroup]="formStudent" (ngSubmit)="enviar()">
+  <div class="row">
+    <div class="col-12">
+      <label class="sr-only" for="primer_nombre">Primer nombre</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="bi bi-fonts"></i></div>
         </div>
+        <input
+          type="text"
+          class="form-control"
+          id="primer_nombre"
+          placeholder="Primer nombre"
+          formControlName="primer_nombre"
+          required
+        />
+      </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <label class="sr-only" for="segundo_nombre">Segundo nombre</label>
-            <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="bi bi-fonts"></i></div>
-                </div>
-                <input type="text" class="form-control" id="segundo_nombre" placeholder="Segundo nombre">
-            </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <label class="sr-only" for="segundo_nombre">Segundo nombre</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="bi bi-fonts"></i></div>
         </div>
+        <input
+          type="text"
+          class="form-control"
+          id="segundo_nombre"
+          placeholder="Segundo nombre"
+          formControlName="segundo_nombre"
+        />
+      </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <label class="sr-only" for="primer_app">Primer apellido</label>
-            <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="bi bi-fonts"></i></div>
-                </div>
-                <input type="text" class="form-control" id="primer_app" placeholder="Primer apellido">
-            </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <label class="sr-only" for="primer_app">Primer apellido</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="bi bi-fonts"></i></div>
         </div>
+        <input
+          type="text"
+          class="form-control"
+          id="primer_app"
+          placeholder="Primer apellido"
+          formControlName="primer_apellido"
+          required
+        />
+      </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <label class="sr-only" for="segundo_app">Segundo apellido</label>
-            <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="bi bi-fonts"></i></div>
-                </div>
-                <input type="text" class="form-control" id="segundo_app" placeholder="Segundo apellido">
-            </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <label class="sr-only" for="segundo_app">Segundo apellido</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="bi bi-fonts"></i></div>
         </div>
+        <input
+          type="text"
+          class="form-control"
+          id="segundo_app"
+          placeholder="Segundo apellido"
+          formControlName="segundo_apellido"
+          required
+        />
+      </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <label class="sr-only" for="semestre">Semestre</label>
-            <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="bi bi-123"></i></div>
-                </div>
-                <select name="" id="semestre" class="form-control">
-                    <option value="1">1° semestre</option>
-                    <option value="2">2° semestre</option>
-                    <option value="3">3° semestre</option>
-                    <option value="4">4° semestre</option>
-                    <option value="5">5° semestre</option>
-                    <option value="6">6° semestre</option>
-                    <option value="7">7° semestre</option>
-                    <option value="8">8° semestre</option>
-                    <option value="9">9° semestre</option>
-                    <option value="10">10° semestre</option>
-                </select>
-            </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <label class="sr-only" for="semestre">Semestre</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="bi bi-123"></i></div>
         </div>
+        <select
+          name=""
+          id="semestre"
+          class="form-select"
+          formControlName="semestre"
+          value="0"
+        >
+          <option value="0">Semestre...</option>
+          <option value="1">1° semestre</option>
+          <option value="2">2° semestre</option>
+          <option value="3">3° semestre</option>
+          <option value="4">4° semestre</option>
+          <option value="5">5° semestre</option>
+          <option value="6">6° semestre</option>
+          <option value="7">7° semestre</option>
+          <option value="8">8° semestre</option>
+          <option value="9">9° semestre</option>
+          <option value="10">10° semestre</option>
+        </select>
+      </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <label class="sr-only" for="carrera">Carrera</label>
-            <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="bi bi-123"></i></div>
-                </div>
-                <select name="" id="carrera" class="form-control">
-                    <option value="ISCO">Ingeniería de sistemas</option>
-                </select>
-            </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <label class="sr-only" for="carrera">Carrera</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="bi bi-123"></i></div>
         </div>
+        <select
+          name=""
+          id="carrera"
+          class="form-select"
+          formControlName="carrera"
+          value="0"
+        >
+          <option value="0">Carrera...</option>
+          <option value="Administración de Empresas">
+            Administración de Empresas
+          </option>
+          <option value="Arquitectura">Arquitectura</option>
+          <option value="Biología">Biología</option>
+          <option value="Comunicación Social">Comunicación Social</option>
+          <option value="Contaduría Pública">Contaduría Pública</option>
+          <option value="Derecho">Derecho</option>
+          <option value="Diseño Gráfico">Diseño Gráfico</option>
+          <option value="Economía">Economía</option>
+          <option value="Educación Física">Educación Física</option>
+          <option value="Enfermería">Enfermería</option>
+          <option value="Finanzas">Finanzas</option>
+          <option value="Fisioterapia">Fisioterapia</option>
+          <option value="Ingeniería química">Ingeniería química</option>
+          <option value="Ingeniería civil">Ingeniería civil</option>
+          <option value="Ingeniería electrónica">Ingeniería electrónica</option>
+          <option value="Ingeniería eléctrica">Ingeniería eléctrica</option>
+          <option value="Ingeniería industrial">Ingeniería industrial</option>
+          <option value="Ingeniería mecatrónica">Ingeniería mecatrónica</option>
+          <option value="Ingeniería de sistemas">Ingeniería de sistemas</option>
+          <option value="Lenguas Modernas">Lenguas Modernas</option>
+          <option value="Medicina">Medicina</option>
+          <option value="Mercadeo">Mercadeo</option>
+          <option value="Nutrición y Dietética">Nutrición y Dietética</option>
+          <option value="Odontología">Odontología</option>
+          <option value="Psicología">Psicología</option>
+          <option value="Publicidad">Publicidad</option>
+          <option value="Sociología">Sociología</option>
+          <option value="Trabajo Social">Trabajo Social</option>
+          <option value="Turismo y Hotelería">Turismo y Hotelería</option>
+        </select>
+      </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <label class="sr-only" for="segundo_app">Contraseña</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="bi bi-hash"></i></div>
+        </div>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Contraseña"
+          formControlName="password"
+          required
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  <!-- Botón Cancelar solo visible en modo Actualizar -->
+  <div *ngIf="mode === 'Actualizar'" class="col-6">
+    <button
+      type="button"
+      class="btn btn-danger btn-lg btn-block mt-2"
+      (click)="change_mode()"
+    >
+      <i class="bi bi-x-circle-fill"></i> Cancelar
+    </button>
+  </div>
+
+  <!-- Botón de acción (Matricular o Actualizar) -->
+  <div [class.col-6]="mode === 'Actualizar'" [class.col-12]="mode !== 'Actualizar'">
+    <button
+      type="submit"
+      class="btn btn-success btn-lg btn-block mt-2"
+      [disabled]="isSubmitting"
+    >
+      <i class="bi bi-floppy-fill"></i> {{ mode }}
+    </button>
+  </div>
+</div>
 </form>

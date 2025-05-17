@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableMateriasComponent } from './table-materias.component';
+import { FormChangePassComponent } from './form-change-pass.component';
 
-describe('TableMateriasComponent', () => {
-  let component: TableMateriasComponent;
-  let fixture: ComponentFixture<TableMateriasComponent>;
+describe('FormChangePassComponent', () => {
+  let component: FormChangePassComponent;
+  let fixture: ComponentFixture<FormChangePassComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TableMateriasComponent]
+      imports: [FormChangePassComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TableMateriasComponent);
+    fixture = TestBed.createComponent(FormChangePassComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

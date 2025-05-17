@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<div class="container my-4">
+  <h1 class="mt-4 mb-4">Estadísticas</h1>
+
+  <!-- Top 3 Estudiantes -->
+  <div class="row mb-4">
+    <h3>Top 3</h3>
+    <div class="col-md-4">
+      <div class="d-flex flex-column gap-3">
+        <div class="d-flex align-items-center border rounded p-3 shadow-sm">
+          <i class="bi bi-trophy-fill fs-3 text-warning me-3"></i>
+          <div>
+            <div class="fw-bold">Puesto 1</div>
+            <div class="text-muted"><b>ID: {{data?.ranking_3[0].id}}</b> {{data?.ranking_3[0].nombre}}</div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center border rounded p-3 shadow-sm">
+          <i class="bi bi-trophy-fill fs-3 text-warning me-3"></i>
+          <div>
+            <div class="fw-bold">Puesto 2</div>
+            <div class="text-muted"><b>ID: {{data?.ranking_3[1].id}}</b> {{data?.ranking_3[1].nombre}}</div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center border rounded p-3 shadow-sm">
+          <i class="bi bi-trophy-fill fs-3 text-warning me-3"></i>
+          <div>
+            <div class="fw-bold">Puesto 3</div>
+            <div class="text-muted"><b>ID: {{data?.ranking_3[2].id}}</b> {{data?.ranking_3[2].nombre}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gráfico principal a la derecha -->
+    <div class="col-md-8">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <canvas #chart1 width="300px" height="200px"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Segunda fila con dos gráficos -->
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <canvas #chart2 width="300px" height="200px"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <canvas #chart3 width="300px" height="200px"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-export interface Materia{
+export interface MateriaPre{
     code: string;
     creditos: number;
     nombre: string;
@@ -7,4 +7,5 @@ export interface Materia{
     nota_3: number;
     promedio: number;
     obs: string;
+    prediccion: boolean;
 }
